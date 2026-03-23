@@ -1,4 +1,4 @@
-# TaskManager — Proyecto Módulo #6 
+# TaskManager — 
 
 Aplicación web desarrollada en **Django 5** que permite gestionar proyectos y tareas de forma eficiente, con sistema de autenticación de usuarios, panel de administración personalizado y cobertura de pruebas unitarias.
 
