@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+
+{% block title %}Eliminar Proyecto — TaskManager{% endblock %}
+
+{% block content %}
+<div class="row justify-content-center">
+  <div class="col-md-6">
+
+    <div class="card border-danger">
+      <div class="card-header bg-danger text-white">
+        <h5 class="mb-0"><i class="bi bi-exclamation-triangle me-2"></i>Confirmar eliminación</h5>
+      </div>
+      <div class="card-body text-center py-4">
+        <i class="bi bi-folder-x text-danger" style="font-size: 3rem;"></i>
+        <h4 class="mt-3">¿Eliminar "{{ project.name }}"?</h4>
+        <p class="text-muted">
+          Esta acción <strong>no se puede deshacer</strong>.<br>
+          Se eliminarán también todas las <strong>{{ project.task_count }} tarea{{ project.task_count|pluralize }}</strong>
+          asociadas al proyecto.
+        </p>
+        <form method="post" class="d-inline">
+          {% csrf_token %}
+          <button type="submit" class="btn btn-danger me-2">
+            <i class="bi bi-trash me-1"></i>Sí, eliminar
+          </button>
+        </form>
+        <a href="{% url 'projects:project_detail' project.pk %}"
+           class="btn btn-outline-secondary">
+          Cancelar
+        </a>
+      </div>
+    </div>
+
+  </div>
+</div>
+{% endblock %}

@@ -1,0 +1,65 @@
+{% extends "base.html" %}
+
+{% block title %}Mi Perfil — TaskManager{% endblock %}
+
+{% block content %}
+<div class="row justify-content-center">
+  <div class="col-md-8">
+
+    <h2 class="mb-4"><i class="bi bi-person-circle me-2 text-primary"></i>Mi Perfil</h2>
+
+    <div class="row g-3 mb-4">
+      <!-- Tarjeta: proyectos totales -->
+      <div class="col-sm-6">
+        <div class="card text-center p-4">
+          <div class="display-4 fw-bold text-primary">{{ total_projects }}</div>
+          <div class="text-muted mt-1"><i class="bi bi-folder2 me-1"></i>Proyectos</div>
+        </div>
+      </div>
+      <!-- Tarjeta: tareas totales -->
+      <div class="col-sm-6">
+        <div class="card text-center p-4">
+          <div class="display-4 fw-bold text-success">{{ total_tasks }}</div>
+          <div class="text-muted mt-1"><i class="bi bi-check2-square me-1"></i>Tareas en total</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Datos de la cuenta -->
+    <div class="card">
+      <div class="card-header bg-light">
+        <i class="bi bi-info-circle me-2"></i>Datos de la cuenta
+      </div>
+      <div class="card-body">
+        <table class="table table-borderless mb-0">
+          <tbody>
+            <tr>
+              <th class="text-muted w-25">Usuario</th>
+              <td>{{ user.username }}</td>
+            </tr>
+            <tr>
+              <th class="text-muted">Email</th>
+              <td>{{ user.email|default:"No especificado" }}</td>
+            </tr>
+            <tr>
+              <th class="text-muted">Nombre</th>
+              <td>{{ user.get_full_name|default:"No especificado" }}</td>
+            </tr>
+            <tr>
+              <th class="text-muted">Miembro desde</th>
+              <td>{{ user.date_joined|date:"d/m/Y" }}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="mt-3">
+      <a href="{% url 'projects:project_list' %}" class="btn btn-primary">
+        <i class="bi bi-folder2-open me-2"></i>Ver mis proyectos
+      </a>
+    </div>
+
+  </div>
+</div>
+{% endblock %}

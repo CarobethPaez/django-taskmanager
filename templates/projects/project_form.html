@@ -1,0 +1,73 @@
+{% extends "base.html" %}
+
+{% block title %}{{ action }} Proyecto — TaskManager{% endblock %}
+
+{% block content %}
+<div class="row justify-content-center">
+  <div class="col-md-7">
+
+    <!-- Breadcrumb -->
+    <nav aria-label="breadcrumb" class="mb-3">
+      <ol class="breadcrumb">
+        <li class="breadcrumb-item">
+          <a href="{% url 'projects:project_list' %}">Mis Proyectos</a>
+        </li>
+        {% if project %}
+          <li class="breadcrumb-item">
+            <a href="{% url 'projects:project_detail' project.pk %}">{{ project.name }}</a>
+          </li>
+        {% endif %}
+        <li class="breadcrumb-item active">{{ action }} Proyecto</li>
+      </ol>
+    </nav>
+
+    <div class="card">
+      <div class="card-header bg-primary text-white">
+        <h5 class="mb-0">
+          <i class="bi bi-folder-plus me-2"></i>{{ action }} Proyecto
+        </h5>
+      </div>
+
+      <div class="card-body p-4">
+        <form method="post" novalidate>
+          {% csrf_token %}
+
+          {% for field in form %}
+          <div class="mb-3">
+            <label for="{{ field.id_for_label }}" class="form-label fw-semibold">
+              {{ field.label }}
+              {% if field.field.required %}
+                <span class="text-danger">*</span>
+              {% endif %}
+            </label>
+            {{ field }}
+            {% if field.help_text %}
+              <div class="form-text">{{ field.help_text }}</div>
+            {% endif %}
+            {% for error in field.errors %}
+              <div class="text-danger small mt-1">
+                <i class="bi bi-exclamation-circle me-1"></i>{{ error }}
+              </div>
+            {% endfor %}
+          </div>
+          {% endfor %}
+
+          <div class="d-flex gap-2 mt-4">
+            <button type="submit" class="btn btn-primary">
+              <i class="bi bi-save me-2"></i>Guardar Proyecto
+            </button>
+            {% if project %}
+              <a href="{% url 'projects:project_detail' project.pk %}"
+                 class="btn btn-outline-secondary">Cancelar</a>
+            {% else %}
+              <a href="{% url 'projects:project_list' %}"
+                 class="btn btn-outline-secondary">Cancelar</a>
+            {% endif %}
+          </div>
+        </form>
+      </div>
+    </div>
+
+  </div>
+</div>
+{% endblock %}
