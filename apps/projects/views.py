@@ -66,7 +66,7 @@ class ProjectCreateView(LoginRequiredMixin, View):
             project.save()
             messages.success(request, f'Proyecto "{project.name}" creado exitosamente.')
             return redirect('projects:project_detail', pk=project.pk)
-        messages.error(request, 'Por favor corregí los errores.')
+        messages.error(request, 'Por favor corregir los errores.')
         return render(request, self.template_name, {'form': form, 'action': 'Crear'})
 
 
