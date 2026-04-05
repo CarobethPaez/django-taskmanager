@@ -31,7 +31,7 @@ Aplicación web desarrollada en **Django 5** que permite gestionar proyectos y t
 ### 1. Clonar el repositorio
 
 ```bash
-git clone https://github.com/TU_USUARIO/django-taskmanager.git
+git clone https://github.com/CarobethPaez/django-taskmanager.git
 cd django-taskmanager
 ```
 
