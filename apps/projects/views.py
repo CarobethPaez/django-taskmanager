@@ -109,7 +109,7 @@ class ProjectUpdateView(LoginRequiredMixin, View):
             form.save()
             messages.success(request, f'Proyecto "{project.name}" actualizado.')
             return redirect('projects:project_detail', pk=project.pk)
-        messages.error(request, 'Por favor corregí los errores.')
+        messages.error(request, 'Por favor corrige los errores.')
         return render(request, self.template_name, {
             'form': form, 'project': project, 'action': 'Editar'
         })
@@ -159,7 +159,7 @@ class TaskCreateView(LoginRequiredMixin, View):
             task.save()
             messages.success(request, f'Tarea "{task.title}" creada.')
             return redirect('projects:project_detail', pk=project.pk)
-        messages.error(request, 'Por favor corregí los errores.')
+        messages.error(request, 'Por favor corrige los errores.')
         return render(request, self.template_name, {
             'form': form, 'project': project, 'action': 'Crear'
         })
@@ -183,7 +183,7 @@ class TaskUpdateView(LoginRequiredMixin, View):
             form.save()
             messages.success(request, f'Tarea "{task.title}" actualizada.')
             return redirect('projects:project_detail', pk=task.project.pk)
-        messages.error(request, 'Por favor corregí los errores.')
+        messages.error(request, 'Por favor corrige los errores.')
         return render(request, self.template_name, {
             'form': form, 'project': task.project, 'task': task, 'action': 'Editar'
         })

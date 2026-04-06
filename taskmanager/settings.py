@@ -80,7 +80,7 @@ AUTH_PASSWORD_VALIDATORS = [
 
 # ─── Internacionalización ─────────────────────────────────────────────────────
 LANGUAGE_CODE = 'es-ar'
-TIME_ZONE = 'America/Argentina/Buenos_Aires'
+TIME_ZONE = 'America'
 USE_I18N = True
 USE_TZ = True
 
