@@ -1,6 +1,6 @@
 """
 Django settings for taskmanager project.
-Proyecto: Django Web App - Evaluación Módulo #6 (Alkemy)
+
 """
 
 from pathlib import Path
